@@ -20,13 +20,23 @@ namespace Tests
 #4
 loada 200
 loadb postpushfirst
-:postpushfirst
 jumpto push
-
-#100
+:postpushfirst
+loada 201
+loadb postpushsecond
+jumpto push
+:postpushsecond
+loada 202
+loadb postpushthird
+jumpto push
+:postpushthird
+:end
+jumpto end
 :push
-storeato 150
+storeato 100
 jumptob
+:stack
+#data 1 2 3
 ";
 
             var memory = new byte[byte.MaxValue];

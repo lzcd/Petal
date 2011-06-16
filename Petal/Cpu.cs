@@ -56,6 +56,7 @@ namespace Petal
                     memory[storeCTargetAddress] = memory[cRegisterAddress];
                     instructionPointer += 2;
                     break;
+             
                 case Instruction.JumpTo:
                     var jumpToAddress = memory[instructionPointer + 1];
                     instructionPointer = jumpToAddress;
@@ -74,6 +75,5 @@ namespace Petal
             memory[instructionPointerAddress] = instructionPointer;
         }
 
-        public static int instructionPointerAddress { get; set; }
     }
 }

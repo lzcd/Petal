@@ -43,6 +43,13 @@ namespace Press
                         case "define":
                             variableByName[words[1]] = byte.Parse(words[2]);
                             break;
+                        case "data":
+                            for (var i = 1; i < words.Length; i++)
+                            {
+                                memory[writeAddress] = byte.Parse(words[i]);
+                                writeAddress += 1;
+                            }
+                            break;
                         default:
                             writeAddress = byte.Parse(firstDirective);
                             break;
