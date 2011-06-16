@@ -70,6 +70,22 @@ namespace Petal
                 case Instruction.JumpToC:
                     instructionPointer = memory[cRegisterAddress];
                     break;
+                case Instruction.IncrementABy:
+                    var aIncrement = memory[instructionPointer +1];
+                    var incrementedA = ((int)memory[aRegisterAddress] + aIncrement) % 256;
+                    memory[aRegisterAddress] = (byte)incrementedA;
+                    break;
+                case Instruction.IncrementBBy:
+                    var bIncrement = memory[instructionPointer + 1];
+                    var incrementedB = ((int)memory[bRegisterAddress] + bIncrement) % 256;
+                    memory[bRegisterAddress] = (byte)incrementedB;
+                    break;
+                case Instruction.IncrementCBy:
+                    var cIncrement = memory[instructionPointer + 1];
+                    var incrementedC = ((int)memory[cRegisterAddress] + cIncrement) % 256;
+                    memory[cRegisterAddress] = (byte)incrementedC;
+                    break;
+
             }
 
             memory[instructionPointerAddress] = instructionPointer;

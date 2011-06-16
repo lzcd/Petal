@@ -18,25 +18,39 @@ namespace Tests
 #start 4
 
 #4
+// initalise stack with its own address
+loada stack
+storeato stack
+
+// push first value
 loada 200
 loadb postpushfirst
 jumpto push
 :postpushfirst
+
+// push second value
 loada 201
 loadb postpushsecond
 jumpto push
 :postpushsecond
+
+// push third value
 loada 202
 loadb postpushthird
 jumpto push
 :postpushthird
+
 :end
 jumpto end
+
+
 :push
-storeato 100
+loadcfrom stack
+incrementcby 1
+storecto stack
 jumptob
 :stack
-#data 1 2 3
+#data 0
 ";
 
             var memory = new byte[byte.MaxValue];

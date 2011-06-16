@@ -20,7 +20,10 @@ namespace Petal
         JumpTo,
         JumpToA,
         JumpToB,
-        JumpToC
+        JumpToC,
+        IncrementABy,
+        IncrementBBy,
+        IncrementCBy
 
     }
 }
