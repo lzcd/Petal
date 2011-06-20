@@ -48,7 +48,7 @@ jumpto end
 loadcfrom stack
 incrementcby 1
 storecto stack
-dereferencec
+storeatocaddress
 jumptob
 :stack
 #data 0
@@ -56,6 +56,10 @@ jumptob
 
             var memory = new byte[byte.MaxValue];
             Assm.Compile(source, ref memory, 0, 1, 2, 3);
+            for (var i = 0; i < 100; i++)
+            {
+                Cpu.Execute(ref memory, 0, 1, 2, 3);
+            }
         }
 
         [TestMethod]

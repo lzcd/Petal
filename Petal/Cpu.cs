@@ -118,16 +118,19 @@ namespace Petal
                     var aIncrement = memory[instructionPointer +1];
                     var incrementedA = ((int)memory[aRegisterAddress] + aIncrement) % 256;
                     memory[aRegisterAddress] = (byte)incrementedA;
+                    instructionPointer += 2;
                     break;
                 case Instruction.IncrementBBy:
                     var bIncrement = memory[instructionPointer + 1];
                     var incrementedB = ((int)memory[bRegisterAddress] + bIncrement) % 256;
                     memory[bRegisterAddress] = (byte)incrementedB;
+                    instructionPointer += 2;
                     break;
                 case Instruction.IncrementCBy:
                     var cIncrement = memory[instructionPointer + 1];
                     var incrementedC = ((int)memory[cRegisterAddress] + cIncrement) % 256;
                     memory[cRegisterAddress] = (byte)incrementedC;
+                    instructionPointer += 2;
                     break;
 
             }
