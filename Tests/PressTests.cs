@@ -40,6 +40,12 @@ loadb postpushthird
 jumpto push
 :postpushthird
 
+// pop first value
+loadb postpopthirdvalue
+jumpto pop
+:postpopthirdvalue
+storeato 100
+
 :end
 jumpto end
 
@@ -56,6 +62,7 @@ loadafrom stack
 dereferencea
 loadcfrom stack
 decrementcby 1
+storecto stack
 jumptob
 
 :stack
