@@ -40,11 +40,23 @@ loadb postpushthird
 jumpto push
 :postpushthird
 
-// pop first value
+// pop third value
 loadb postpopthirdvalue
 jumpto pop
 :postpopthirdvalue
 storeato 100
+
+// pop second value
+loadb postpopsecondvalue
+jumpto pop
+:postpopsecondvalue
+storeato 101
+
+// pop first value
+loadb postpopfirstvalue
+jumpto pop
+:postpopfirstvalue
+storeato 102
 
 :end
 jumpto end
@@ -71,7 +83,7 @@ jumptob
 
             var memory = new byte[byte.MaxValue];
             Assm.Compile(source, ref memory, 0, 1, 2, 3);
-            for (var i = 0; i < 50; i++)
+            for (var i = 0; i < 100; i++)
             {
                 Cpu.Execute(ref memory, 0, 1, 2, 3);
             }
