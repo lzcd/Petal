@@ -32,7 +32,10 @@ namespace Petal
         JumpToC,
         IncrementABy,
         IncrementBBy,
-        IncrementCBy
+        IncrementCBy,
+        DecrementABy,
+        DecrementBBy,
+        DecrementCBy
 
     }
 }

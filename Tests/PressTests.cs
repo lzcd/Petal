@@ -50,13 +50,21 @@ incrementcby 1
 storecto stack
 storeatocaddress
 jumptob
+
+:pop
+loadafrom stack
+dereferencea
+loadcfrom stack
+decrementcby 1
+jumptob
+
 :stack
 #data 0
 ";
 
             var memory = new byte[byte.MaxValue];
             Assm.Compile(source, ref memory, 0, 1, 2, 3);
-            for (var i = 0; i < 100; i++)
+            for (var i = 0; i < 50; i++)
             {
                 Cpu.Execute(ref memory, 0, 1, 2, 3);
             }
