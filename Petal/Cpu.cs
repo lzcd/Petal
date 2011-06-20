@@ -134,19 +134,19 @@ namespace Petal
                     break;
                 case Instruction.DecrementABy:
                     var aDecrement = memory[instructionPointer + 1];
-                    var decrementedA = ((int)memory[aRegisterAddress] + aDecrement) % 256;
+                    var decrementedA = ((int)memory[aRegisterAddress] - aDecrement) % 256;
                     memory[aRegisterAddress] = (byte)decrementedA;
                     instructionPointer += 2;
                     break;
                 case Instruction.DecrementBBy:
                     var bDecrement = memory[instructionPointer + 1];
-                    var decrementedB = ((int)memory[bRegisterAddress] + bDecrement) % 256;
+                    var decrementedB = ((int)memory[bRegisterAddress] - bDecrement) % 256;
                     memory[bRegisterAddress] = (byte)decrementedB;
                     instructionPointer += 2;
                     break;
                 case Instruction.DecrementCBy:
                     var cDecrement = memory[instructionPointer + 1];
-                    var decrementedC = ((int)memory[cRegisterAddress] + cDecrement) % 256;
+                    var decrementedC = ((int)memory[cRegisterAddress] - cDecrement) % 256;
                     memory[cRegisterAddress] = (byte)decrementedC;
                     instructionPointer += 2;
                     break;
