@@ -18,10 +18,6 @@ namespace Tests
 #start 4
 
 #4
-// initalise stack with its own address
-loada stack
-storeato stack
-
 // push first value
 loada 200
 loadb postpushfirst
