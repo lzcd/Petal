@@ -15,9 +15,10 @@ namespace Tests
         public void ShouldPushAndPop()
         {
             var source = @"
-#start 4
+#start beginning
 
 #4
+:beginning
 // push first value
 loada 200
 loadb postpushfirst

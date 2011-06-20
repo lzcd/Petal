@@ -38,7 +38,16 @@ namespace Press
                     switch (firstDirective.ToLower())
                     {
                         case "start":
-                            memory[instructionPointerAddress] = byte.Parse(words[1]);
+                            var startAddressWord = words[1];
+                            byte startAddress;
+                            if (byte.TryParse(startAddressWord, out startAddress))
+                            {
+                                memory[instructionPointerAddress] = startAddress;
+                            }
+                            else
+                            {
+                                AddReference(startAddressWord, writeAddress, referencesByLabel);
+                            }
                             break;
                         case "define":
                             variableByName[words[1]] = byte.Parse(words[2]);
