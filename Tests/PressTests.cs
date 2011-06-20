@@ -48,6 +48,7 @@ jumpto end
 loadcfrom stack
 incrementcby 1
 storecto stack
+dereferencec
 jumptob
 :stack
 #data 0

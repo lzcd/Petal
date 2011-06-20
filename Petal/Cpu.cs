@@ -41,6 +41,21 @@ namespace Petal
                     memory[cRegisterAddress] = memory[loadCSourceAddress];
                     instructionPointer += 2;
                     break;
+                case Instruction.DereferenceA:
+                    var aReference = memory[aRegisterAddress];
+                    memory[aRegisterAddress] = memory[aReference];
+                    instructionPointer += 1;
+                    break;
+                case Instruction.DereferenceB:
+                    var bReference = memory[bRegisterAddress];
+                    memory[bRegisterAddress] = memory[bReference];
+                    instructionPointer += 1;
+                    break;
+                case Instruction.DereferenceC:
+                    var cReference = memory[cRegisterAddress];
+                    memory[cRegisterAddress] = memory[cReference];
+                    instructionPointer += 1;
+                    break;
                 case Instruction.StoreATo:
                     var storeATargetAddress = memory[instructionPointer + 1];
                     memory[storeATargetAddress] = memory[aRegisterAddress];
@@ -56,7 +71,36 @@ namespace Petal
                     memory[storeCTargetAddress] = memory[cRegisterAddress];
                     instructionPointer += 2;
                     break;
-             
+                case Instruction.StoreAToBAddress:
+                    var storeAToBTargetAddress = memory[bRegisterAddress];
+                    memory[storeAToBTargetAddress] = memory[aRegisterAddress];
+                    instructionPointer += 1;
+                    break;
+                case Instruction.StoreAToCAddress:
+                    var storeAToCTargetAddress = memory[cRegisterAddress];
+                    memory[storeAToCTargetAddress] = memory[aRegisterAddress];
+                    instructionPointer += 1;
+                    break;
+                case Instruction.StoreBToAAddress:
+                    var storeBToATargetAddress = memory[aRegisterAddress];
+                    memory[storeBToATargetAddress] = memory[bRegisterAddress];
+                    instructionPointer += 1;
+                    break;
+                case Instruction.StoreBToCAddress:
+                    var storeBToCTargetAddress = memory[cRegisterAddress];
+                    memory[storeBToCTargetAddress] = memory[bRegisterAddress];
+                    instructionPointer += 1;
+                    break;
+                case Instruction.StoreCToAAddress:
+                    var storeCToATargetAddress = memory[aRegisterAddress];
+                    memory[storeCToATargetAddress] = memory[cRegisterAddress];
+                    instructionPointer += 1;
+                    break;
+                case Instruction.StoreCToBAddress:
+                    var storeCToBTargetAddress = memory[bRegisterAddress];
+                    memory[storeCToBTargetAddress] = memory[cRegisterAddress];
+                    instructionPointer += 1;
+                    break;
                 case Instruction.JumpTo:
                     var jumpToAddress = memory[instructionPointer + 1];
                     instructionPointer = jumpToAddress;
