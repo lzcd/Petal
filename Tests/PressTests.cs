@@ -77,8 +77,10 @@ decrementcby 1
 storecto stack
 jumptob
 
+
 :stack
-#data 0
+// load its own address in by default
+#data stack
 ";
 
             var memory = new byte[byte.MaxValue];

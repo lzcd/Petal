@@ -46,7 +46,16 @@ namespace Press
                         case "data":
                             for (var i = 1; i < words.Length; i++)
                             {
-                                memory[writeAddress] = byte.Parse(words[i]);
+                                var dataWord = words[i];
+                                byte dataAddress;
+                                if (byte.TryParse(dataWord, out dataAddress))
+                                {
+                                    memory[writeAddress] = dataAddress;
+                                }
+                                else
+                                {
+                                    AddReference(dataWord, writeAddress, referencesByLabel);
+                                }
                                 writeAddress += 1;
                             }
                             break;
@@ -80,13 +89,7 @@ namespace Press
                         {
                             if (!variableByName.TryGetValue(word, out value))
                             {
-                                List<byte> references;
-                                if (!referencesByLabel.TryGetValue(word, out references))
-                                {
-                                    references = new List<byte>();
-                                    referencesByLabel[word] = references;
-                                }
-                                references.Add(writeAddress);
+                                AddReference(word, writeAddress, referencesByLabel);
                             }
                         }
                     }
@@ -110,6 +113,17 @@ namespace Press
                 }
             }
 
+        }
+
+        private static void AddReference(string word, byte writeAddress, Dictionary<string, List<byte>> referencesByLabel)
+        {
+            List<byte> references;
+            if (!referencesByLabel.TryGetValue(word, out references))
+            {
+                references = new List<byte>();
+                referencesByLabel[word] = references;
+            }
+            references.Add(writeAddress);
         }
     }
 }
